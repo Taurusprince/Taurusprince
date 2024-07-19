@@ -39,3 +39,35 @@ class Game:
         # Here you would implement the logic for generating a VR recap
         pass
 
+import logging
+import datetime
+
+# Create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Create log file handlers for each log type
+ai_decision_handler = logging.FileHandler('ai_decision.log')
+error_bug_handler = logging.FileHandler('error_bug.log')
+player_feedback_handler = logging.FileHandler('player_feedback.log')
+
+# Set log formats
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+ai_decision_handler.setFormatter(formatter)
+error_bug_handler.setFormatter(formatter)
+player_feedback_handler.setFormatter(formatter)
+
+# Add handlers to the logger
+logger.addHandler(ai_decision_handler)
+logger.addHandler(error_bug_handler)
+logger.addHandler(player_feedback_handler)
+
+# Example usage
+def ai_decision(decision):
+    logger.debug(f"{datetime.datetime.now()}: AI made decision: {decision}")
+
+def report_error(error):
+    logger.error(f"{datetime.datetime.now()}: Error encountered: {error}")
+
+def player_feedback(feedback):
+    logger.info(f"{datetime.datetime.now()}: Player feedback: {feedback}")
