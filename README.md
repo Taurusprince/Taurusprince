@@ -107,7 +107,7 @@ class Game:
         battle = Battle(self.character1, self.character2)
         battle.start()
         battle.print_status()
-
+logger = logging.getLogger(name) logger.setLevel(logging.DEBUG
 
 # Example characters
 player1 = Character("Player 1", 100, 50)
